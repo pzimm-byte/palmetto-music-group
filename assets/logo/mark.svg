@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Palmetto Music Group">
+  <g transform="translate(100,100)">
+    <ellipse cx="0" cy="-52" rx="18" ry="48" fill="#9BDF62"/>
+    <ellipse cx="0" cy="52" rx="18" ry="48" fill="#9BDF62"/>
+    <ellipse cx="-52" cy="0" rx="48" ry="18" fill="#9BDF62"/>
+    <ellipse cx="52" cy="0" rx="48" ry="18" fill="#9BDF62"/>
+    <ellipse cx="-37" cy="-37" rx="18" ry="48" fill="#3B792F" transform="rotate(-45)"/>
+    <ellipse cx="37" cy="-37" rx="18" ry="48" fill="#3B792F" transform="rotate(45)"/>
+    <ellipse cx="-37" cy="37" rx="18" ry="48" fill="#3B792F" transform="rotate(45)"/>
+    <ellipse cx="37" cy="37" rx="18" ry="48" fill="#3B792F" transform="rotate(-45)"/>
+    <circle r="10" fill="#222"/>
+  </g>
+</svg>
