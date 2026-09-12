@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Palmetto Music Group</title>
+  <link rel="icon" href="assets/logo/mark.svg" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body data-page="contact">
+  <div id="site-header"></div>
+  <section class="hero" style="padding-bottom:12px">
+    <div class="wrap-narrow">
+      <p class="kicker">Contact</p>
+      <h1 class="display">Write to the collective.</h1>
+      <p class="lede">Licensing, church partnerships, or a note about a song — we read everything that comes in.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap-narrow">
+      <form class="form" onsubmit="event.preventDefault(); PMG.toast('Message sent (mock). We will reply by email.'); this.reset();">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" required placeholder="Your name" />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" type="email" required placeholder="you@church.org" />
+        </div>
+        <div>
+          <label for="topic">Topic</label>
+          <select id="topic">
+            <option>General</option>
+            <option>Licensing / recording</option>
+            <option>Church partnership / free-access request</option>
+            <option>Technical help with downloads</option>
+          </select>
+        </div>
+        <div>
+          <label for="msg">Message</label>
+          <textarea id="msg" required placeholder="How can we help?"></textarea>
+        </div>
+        <button class="btn btn-lime" type="submit">Send message</button>
+      </form>
+    </div>
+  </section>
+  <div id="site-footer"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>

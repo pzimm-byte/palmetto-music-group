@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Music — Palmetto Music Group</title>
+  <link rel="icon" href="assets/logo/mark.svg" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body data-page="music">
+  <div id="site-header"></div>
+  <section class="hero" style="padding-bottom:24px">
+    <div class="wrap">
+      <p class="kicker">Listen</p>
+      <h1 class="display" style="max-width:16ch">Music for Sunday, not the stage show.</h1>
+      <p class="lede">Stream the catalog, then take the songs into your church with charts and stems.</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:0">
+    <div class="wrap" id="discog"></div>
+  </section>
+  <div id="site-footer"></div>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById("discog").innerHTML = PMG.catalog.map(r => `
+      <article class="featured" style="margin-bottom:24px">
+        <div class="album-art" style="border-radius:12px"><img src="assets/logo/mark.svg" alt=""></div>
+        <div>
+          <p class="kicker">${r.type} · ${r.year}</p>
+          <h2>${r.title}</h2>
+          <p class="muted">${r.blurb}</p>
+          <p>${r.songs.map(s => `<span class="badge">${s.title}</span>`).join(" ")}</p>
+          <div class="hero-actions" style="margin-top:16px">
+            <a class="btn btn-lime btn-sm" href="#">Spotify</a>
+            <a class="btn btn-outline btn-sm" href="#">Apple Music</a>
+            <a class="btn btn-ghost btn-sm" href="resources.html">Resources</a>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  </script>
+</body>
+</html>
