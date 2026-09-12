@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Account — Palmetto Music Group</title>
+  <link rel="icon" href="assets/logo/mark.svg" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <section class="section">
+    <div class="wrap-narrow" id="box"></div>
+  </section>
+  <div id="site-footer"></div>
+  <script src="js/app.js"></script>
+  <script>
+    const s = PMG.getSession();
+    const box = document.getElementById("box");
+    if (!s) {
+      box.innerHTML = `<h2>No session</h2><p class="muted">Sign in to see church access and purchases.</p><a class="btn btn-lime" href="auth/login.html">Sign in</a>`;
+    } else {
+      box.innerHTML = `
+        <p class="kicker">Account</p>
+        <h2>${s.name}</h2>
+        <p>${s.email}<br><span class="muted">${s.role}${s.org ? " · " + s.org : ""}</span></p>
+        <p>${s.orgFree ? '<span class="badge">Organization free access</span>' : '<span class="badge badge-public">Purchases only</span>'}</p>
+        <p class="muted">Unlocked SKUs: ${(s.purchases||[]).join(", ") || "none yet"}</p>
+        ${s.role === "admin" ? '<p><a class="btn btn-forest" href="admin/index.html">Open admin</a></p>' : ""}
+        <button class="btn btn-outline" onclick="PMG.clearSession(); location.href='index.html'">Sign out</button>
+      `;
+    }
+  </script>
+</body>
+</html>
