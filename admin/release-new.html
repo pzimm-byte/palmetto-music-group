@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>New release — Admin</title>
+  <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="aside" id="aside"></aside>
+    <main class="admin-main">
+      <p class="kicker">Upload</p>
+      <h2>Create a release</h2>
+      <form class="form" style="max-width:640px;margin-top:20px" onsubmit="event.preventDefault(); PMG.toast('Release saved as draft (mock).');">
+        <div><label>Title</label><input required placeholder="Steadfast Love" /></div>
+        <div class="grid-2"><div><label>Slug</label><input placeholder="steadfast-love" /></div><div><label>Release date</label><input type="date" /></div></div>
+        <div><label>Description</label><textarea placeholder="Short pastoral note."></textarea></div>
+        <button class="btn btn-lime" type="submit">Publish</button>
+      </form>
+    </main>
+  </div>
+  <script src="../js/app.js"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

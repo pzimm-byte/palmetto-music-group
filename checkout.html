@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Palmetto Music Group</title>
+  <link rel="icon" href="assets/logo/mark.svg" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  <div class="auth-card">
+    <p class="kicker">Stripe Checkout · mock</p>
+    <h2 id="title">Complete purchase</h2>
+    <form class="form" id="pay">
+      <div><label>Cardholder</label><input value="Jordan Ellis" required /></div>
+      <div><label>Card number</label><input value="4242 4242 4242 4242" required /></div>
+      <div class="grid-2"><div><label>Expiry</label><input value="12 / 28" required /></div><div><label>CVC</label><input value="123" required /></div></div>
+      <button class="btn btn-lime btn-block" type="submit">Pay <span id="amt"></span></button>
+      <p class="muted center" style="font-size:12px">Demo only. No charge is placed.</p>
+    </form>
+  </div>
+  <div id="site-footer"></div>
+  <script src="js/app.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const sku = q.get("sku") || "s1:chart";
+    const price = Number(q.get("price") || 250);
+    document.getElementById("amt").textContent = PMG.money(price);
+    document.getElementById("title").textContent = "Pay " + PMG.money(price);
+    document.getElementById("pay").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const s = PMG.getSession() || { email: "guest@example.com", name: "Guest", role: "public", orgFree: false, purchases: [] };
+      s.purchases = s.purchases || [];
+      if (!s.purchases.includes(sku)) s.purchases.push(sku);
+      PMG.setSession(s);
+      PMG.toast("Payment complete. File unlocked.");
+      setTimeout(() => location.href = "resources.html", 700);
+    });
+  </script>
+</body>
+</html>
