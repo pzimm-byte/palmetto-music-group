@@ -24,6 +24,7 @@
 .section{padding:72px 0}.section-mint{background:var(--mint)}.section-paper{background:var(--paper)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:32px}
 h2{font-family:var(--serif);font-size:clamp(28px,3vw,36px);font-weight:500;line-height:1.2;margin:0 0 8px}h3{font-size:20px;margin:0 0 8px}p{margin:0 0 1em}.muted{color:var(--muted)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.grid-albums{max-width:720px}
 .album{background:#fff;border:1px solid var(--hairline);border-radius:12px;overflow:hidden}
 .album-art{aspect-ratio:1;background:radial-gradient(ellipse 46% 42% at 0% 0%,rgba(155,223,98,.55),transparent 72%),radial-gradient(ellipse 42% 38% at 100% 100%,rgba(59,121,47,.26),transparent 70%),var(--paper);display:grid;place-items:center}
 .album-art img{width:42%;height:auto;background:transparent}.album-body{padding:16px 18px 20px}.meta{font-size:13px;color:var(--muted)}
