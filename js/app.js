@@ -59,7 +59,7 @@
         <a href="${R}contact.html" class="${active === "contact" ? "active" : ""}">Contact</a>
       </nav>
       <div class="nav-cta">${s && s.role === "admin" ? `<a class="btn btn-ghost btn-sm" href="${R}admin/index.html">Dashboard</a>` : ""}${cta}
-        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+        <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navLinks').classList.toggle('open')"><span class="nav-toggle-icon" aria-hidden="true"></span></button>
       </div></div></header>`;
   }
   function footer() {
