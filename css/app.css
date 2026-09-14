@@ -17,6 +17,10 @@
 .display{font-family:var(--serif);font-weight:500;font-size:clamp(36px,5.4vw,56px);line-height:1.15;letter-spacing:-.02em;margin:0 0 20px;max-width:18ch}
 .landing-hero-title{width:max-content;max-width:100%;margin:0 0 32px;font-size:clamp(26px,4.8vw,56px)}
 .lede{font-size:18px;color:var(--muted);max-width:46ch;margin:0 0 28px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.landing-hero .hero-actions{justify-content:center;width:100%}
+#who-we-are{scroll-margin-top:88px}
+.mission{max-width:46ch;margin:8px 0 32px;padding:24px 28px;background:#fff;border:1px solid var(--hairline);border-radius:12px;border-left:4px solid var(--forest)}
+.mission p:last-child{margin:0;font-family:var(--serif);font-size:20px;line-height:1.45}
 .section{padding:72px 0}.section-mint{background:var(--mint)}.section-paper{background:var(--paper)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:32px}
 h2{font-family:var(--serif);font-size:clamp(28px,3vw,36px);font-weight:500;line-height:1.2;margin:0 0 8px}h3{font-size:20px;margin:0 0 8px}p{margin:0 0 1em}.muted{color:var(--muted)}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
