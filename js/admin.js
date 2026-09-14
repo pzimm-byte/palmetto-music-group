@@ -11,9 +11,10 @@
   if (el) {
     el.innerHTML = `
       <a class="logo" href="index.html" style="margin-bottom:20px">
-        <img src="../assets/logo/mark.svg" alt="" style="height:36px">
+        <img src="../assets/logo/mark.png" alt="" style="height:36px;width:auto">
       </a>
       ${links.map(([href, label]) => `<a href="${href}" class="${file === href ? "active" : ""}">${label}</a>`).join("")}
     `;
   }
+  if (window.PMG) window.PMG.icons();
 })();

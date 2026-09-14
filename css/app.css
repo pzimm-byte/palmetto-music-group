@@ -5,7 +5,6 @@
 .nav{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--hairline)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;width:min(var(--max),calc(100% - 48px));margin-inline:auto;gap:24px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}.logo img{height:44px;width:auto}
-.logo-text{display:flex;flex-direction:column;line-height:1.05}.logo-text strong{font-size:13px;letter-spacing:.14em;font-weight:800}.logo-text span{font-size:10px;letter-spacing:.16em;font-weight:600;color:var(--muted)}
 .nav-links{display:flex;align-items:center;gap:28px}.nav-links a{color:var(--charcoal);font-size:14px;font-weight:600;text-decoration:none}.nav-links a:hover,.nav-links a.active{color:var(--forest)}
 .nav-cta{display:flex;gap:10px;align-items:center}.nav-toggle{display:none;background:none;border:0;cursor:pointer}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:var(--radius);padding:11px 18px;font-weight:700;font-size:14px;border:1px solid transparent;cursor:pointer;text-decoration:none;line-height:1.2}

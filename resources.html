@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Resources — Palmetto Music Group</title>
-  <link rel="icon" href="assets/logo/mark.svg" />
+  <link rel="icon" href="assets/logo/mark.png" />
   <link rel="stylesheet" href="css/app.css" />
 </head>
 <body data-page="resources">
@@ -37,16 +37,17 @@
         lane.innerHTML = `<div><span class="badge badge-public">Public account</span><div><strong>${s.name}</strong></div><div class="muted">${s.email}</div></div><button class="btn btn-ghost btn-sm" onclick="PMG.clearSession(); location.reload()">Sign out</button>`;
       }
       document.getElementById("list").innerHTML = PMG.catalog.map(rel => `
-        <div class="release-block"><div class="release-title"><div class="thumb"></div><div><h3>${rel.title}</h3><div class="meta">${rel.type} · ${rel.year}</div></div></div>
+        <div class="release-block"><div class="release-title"><div class="thumb" style="display:grid;place-items:center"><i data-lucide="audio-lines" style="width:22px;height:22px;color:var(--forest)"></i></div><div><h3>${rel.title}</h3><div class="meta">${rel.type} · ${rel.year}</div></div></div>
         ${rel.songs.map(song => {
           const btns = ["chart","lyric","stem"].map(type => {
             const label = type === "chart" ? "Lead sheet" : type === "lyric" ? "Lyrics" : "Stems ZIP";
             const price = song.prices[type];
-            if (free || PMG.owns(s, song.id, type) || price === 0) return `<button class="btn btn-lime btn-sm" onclick="PMG.download('${song.title} ${label}')">${label}</button>`;
-            return `<button class="btn btn-outline btn-sm" onclick="PMG.buy('${song.id}','${type}',${price})">${PMG.money(price)} ${label}</button>`;
+            if (free || PMG.owns(s, song.id, type) || price === 0) return `<button class="btn btn-lime btn-sm" onclick="PMG.download('${song.title} ${label}')"><i data-lucide="download" style="width:15px;height:15px"></i>${label}</button>`;
+            return `<button class="btn btn-outline btn-sm" onclick="PMG.buy('${song.id}','${type}',${price})"><i data-lucide="shopping-cart" style="width:15px;height:15px"></i>${PMG.money(price)} ${label}</button>`;
           }).join("");
-          return `<div class="song-row"><button class="play" onclick="PMG.toast('Preview: ${song.title}')">▶</button><div><strong>${song.title}</strong><div class="song-meta"><span>Key ${song.key}</span><span>${song.bpm} BPM</span><span>CCLI ${song.ccli}</span></div></div><div class="actions">${btns}</div></div>`;
+          return `<div class="song-row"><button class="play" onclick="PMG.toast('Preview: ${song.title}')"><i data-lucide="play" style="width:18px;height:18px"></i></button><div><strong>${song.title}</strong><div class="song-meta"><span>Key ${song.key}</span><span>${song.bpm} BPM</span><span>CCLI ${song.ccli}</span></div></div><div class="actions">${btns}</div></div>`;
         }).join("")}</div>`).join("");
+      PMG.icons();
     }
     render();
   </script>

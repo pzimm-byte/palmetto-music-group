@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Palmetto Music Group — Songs for the gathered church</title>
-  <link rel="icon" href="assets/logo/mark.svg" />
+  <link rel="icon" href="assets/logo/mark.png" />
   <link rel="stylesheet" href="css/app.css" />
 </head>
 <body data-page="home">
@@ -24,14 +24,14 @@
     <div class="wrap">
       <div class="featured">
         <div class="album-art" style="border-radius:12px">
-          <img src="assets/logo/mark.svg" alt="" />
+          <img src="assets/logo/mark.png" alt="" />
         </div>
         <div>
           <p class="kicker">Featured EP · 2026</p>
           <h2>Steadfast Love</h2>
           <p class="muted">Five songs written to be sung by ordinary congregations — weighty words, simple melodies, room for a church to lift its voice.</p>
           <div class="player">
-            <button class="play" id="playBtn" aria-label="Play preview">▶</button>
+            <button class="play" id="playBtn" aria-label="Play preview"><i data-lucide="play" style="width:20px;height:20px"></i></button>
             <div>
               <strong>Steadfast Love</strong>
               <div class="meta">Preview · D · 72 BPM</div>
@@ -67,15 +67,15 @@
       </div>
       <div class="grid-3">
         <a class="album" href="music.html">
-          <div class="album-art"><img src="assets/logo/mark.svg" alt=""></div>
+          <div class="album-art"><img src="assets/logo/mark.png" alt=""></div>
           <div class="album-body"><h3>Steadfast Love</h3><p class="meta">EP · 2026 · 5 songs</p></div>
         </a>
         <a class="album" href="music.html">
-          <div class="album-art"><img src="assets/logo/mark.svg" alt=""></div>
+          <div class="album-art"><img src="assets/logo/mark.png" alt=""></div>
           <div class="album-body"><h3>Near to Us</h3><p class="meta">Single · 2025</p></div>
         </a>
         <a class="album" href="resources.html">
-          <div class="album-art"><img src="assets/logo/mark.svg" alt=""></div>
+          <div class="album-art"><img src="assets/logo/mark.png" alt=""></div>
           <div class="album-body"><h3>Resource library</h3><p class="meta">Charts · Lyrics · Stems</p></div>
         </a>
       </div>
@@ -93,8 +93,11 @@
   <script src="js/app.js"></script>
   <script>
     document.getElementById("playBtn")?.addEventListener("click", function () {
-      this.textContent = this.textContent === "▶" ? "❚❚" : "▶";
-      PMG.toast(this.textContent === "❚❚" ? "Preview playing (mock)" : "Paused");
+      const playing = this.dataset.playing === "true";
+      this.dataset.playing = playing ? "false" : "true";
+      this.innerHTML = `<i data-lucide="${playing ? "play" : "pause"}" style="width:20px;height:20px"></i>`;
+      PMG.icons();
+      PMG.toast(playing ? "Paused" : "Preview playing (mock)");
     });
   </script>
 </body>

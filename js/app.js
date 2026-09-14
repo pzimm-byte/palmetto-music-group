@@ -25,13 +25,33 @@
     if (!t) { t = document.createElement("div"); t.className = "toast"; document.body.appendChild(t); }
     t.textContent = msg; t.classList.add("show"); setTimeout(() => t.classList.remove("show"), 2600);
   }
+  const ICON_PATHS = {
+    play: '<polygon points="6 3 20 12 6 21 6 3"/>',
+    pause: '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+    download: '<path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 19h14"/>',
+    "shopping-cart": '<circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8a2 2 0 0 0 2-1.6L21 8H6"/>',
+    "audio-lines": '<path d="M4 12v1"/><path d="M8 8v9"/><path d="M12 5v15"/><path d="M16 8v9"/><path d="M20 12v1"/>'
+  };
+  function icons(root) {
+    (root || document).querySelectorAll("[data-lucide]").forEach(function (el) {
+      const name = el.getAttribute("data-lucide");
+      const inner = ICON_PATHS[name];
+      if (!inner || el.dataset.lucideRendered) return;
+      const fill = name === "play" ? "currentColor" : "none";
+      el.innerHTML = '<svg viewBox="0 0 24 24" width="100%" height="100%" fill="' + fill + '" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="display:block">' + inner + '</svg>';
+      el.style.display = el.style.display || "inline-flex";
+      el.style.width = el.style.width || "20px";
+      el.style.height = el.style.height || el.style.width;
+      el.dataset.lucideRendered = "true";
+    });
+  }
   function header(active) {
     const s = getSession();
     const cta = s
       ? `<a class="btn btn-outline btn-sm" href="${R}account.html">${s.role === "admin" ? "Admin" : s.name || s.email}</a>`
       : `<a class="btn btn-lime btn-sm" href="${R}auth/login.html">Sign in</a>`;
     return `<header class="nav"><div class="nav-inner">
-      <a class="logo" href="${R}index.html"><img src="${R}assets/logo/mark.svg" alt="Palmetto mark"><span class="logo-text"><strong>PALMETTO</strong><span>MUSIC GROUP</span></span></a>
+      <a class="logo" href="${R}index.html"><img src="${R}assets/logo/lockup-horizontal.png" alt="Palmetto Music Group"></a>
       <nav class="nav-links" id="navLinks">
         <a href="${R}music.html" class="${active === "music" ? "active" : ""}">Music</a>
         <a href="${R}resources.html" class="${active === "resources" ? "active" : ""}">Resources</a>
@@ -44,14 +64,14 @@
   }
   function footer() {
     return `<footer><div class="wrap foot">
-      <div><a class="logo" href="${R}index.html"><img src="${R}assets/logo/mark.svg" alt="" style="height:40px"><span class="logo-text"><strong>PALMETTO</strong><span>MUSIC GROUP</span></span></a>
+      <div><a class="logo" href="${R}index.html"><img src="${R}assets/logo/lockup-horizontal.png" alt="Palmetto Music Group"></a>
         <p class="muted" style="margin-top:12px">Songs for the gathered church — written in Greenville, South Carolina.</p></div>
       <div><strong>Listen</strong><p><a href="${R}music.html">Music</a><br><a href="${R}resources.html">Resources</a></p></div>
       <div><strong>Collective</strong><p><a href="${R}about.html">About</a><br><a href="${R}contact.html">Contact</a><br><a href="${R}auth/login.html">Sign in</a></p></div>
       <div><strong>Church</strong><p>Palmetto Baptist Church<br>Greenville, SC</p></div>
     </div><div class="wrap legal"><span>© ${new Date().getFullYear()} Palmetto Music Group. All rights reserved.</span></div></footer><div class="toast"></div>`;
   }
-  window.PMG = { catalog, getSession, setSession, clearSession, money, entitled, owns, toast, header, footer,
+  window.PMG = { catalog, getSession, setSession, clearSession, money, entitled, owns, toast, header, footer, icons,
     loginDemo(kind) {
       if (kind === "pbc") setSession({ email: "music@palmettobaptist.org", name: "PBC Music Team", role: "church_leader", org: "Palmetto Baptist Church", orgFree: true, purchases: [] });
       else if (kind === "admin") setSession({ email: "admin@palmettomusic.group", name: "Collective Admin", role: "admin", org: "Palmetto Music Group", orgFree: true, purchases: [] });
@@ -70,5 +90,6 @@
     const mountF = document.getElementById("site-footer");
     if (mountH) mountH.outerHTML = header(document.body.dataset.page || "");
     if (mountF) mountF.outerHTML = footer();
+    icons();
   });
 })();
