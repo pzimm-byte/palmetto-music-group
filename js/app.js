@@ -91,5 +91,9 @@
     if (mountH) mountH.outerHTML = header(document.body.dataset.page || "");
     if (mountF) mountF.outerHTML = footer();
     icons();
+    document.querySelectorAll(".album-art").forEach(function (el, i) {
+      if (/album-art--/.test(el.className)) return;
+      el.classList.add("album-art--" + "abcd"[i % 4]);
+    });
   });
 })();
