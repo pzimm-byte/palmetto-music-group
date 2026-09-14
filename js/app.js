@@ -54,7 +54,7 @@
       <a class="logo" href="${R}index.html"><img src="${R}assets/logo/lockup-horizontal.png" alt="Palmetto Music Group"></a>
       <nav class="nav-links" id="navLinks">
         <a href="${R}music.html" class="${active === "music" ? "active" : ""}">Music</a>
-        <a href="${R}resources.html" class="${active === "resources" ? "active" : ""}">Resources</a>
+        <a href="${R}resources.html" class="${active === "resources" ? "active" : ""}">Library</a>
         <a href="${R}about.html" class="${active === "about" ? "active" : ""}">About</a>
         <a href="${R}contact.html" class="${active === "contact" ? "active" : ""}">Contact</a>
       </nav>
