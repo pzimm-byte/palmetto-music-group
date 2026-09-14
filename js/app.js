@@ -54,7 +54,7 @@
       <a class="logo" href="${R}index.html"><img src="${R}assets/logo/lockup-horizontal.png" alt="Palmetto Music Group"></a>
       <nav class="nav-links" id="navLinks">
         <a href="${R}music.html" class="${active === "music" ? "active" : ""}">Music</a>
-        <a href="${R}resources.html" class="${active === "resources" ? "active" : ""}">Resources</a>
+        <a href="${R}resources.html" class="${active === "resources" ? "active" : ""}">Library</a>
         <a href="${R}about.html" class="${active === "about" ? "active" : ""}">About</a>
         <a href="${R}contact.html" class="${active === "contact" ? "active" : ""}">Contact</a>
       </nav>
@@ -65,8 +65,8 @@
   function footer() {
     return `<footer><div class="wrap foot">
       <div><a class="logo" href="${R}index.html"><img src="${R}assets/logo/lockup-horizontal.png" alt="Palmetto Music Group"></a>
-        <p class="muted" style="margin-top:12px">Songs for the gathered church — written in Greenville, South Carolina.</p></div>
-      <div><strong>Listen</strong><p><a href="${R}music.html">Music</a><br><a href="${R}resources.html">Resources</a></p></div>
+        <p class="muted" style="margin-top:12px">Songs for the Church, written in<br>Greenville, South Carolina</p></div>
+      <div><strong>Listen</strong><p><a href="${R}music.html">Music</a><br><a href="${R}resources.html">Library</a></p></div>
       <div><strong>Collective</strong><p><a href="${R}about.html">About</a><br><a href="${R}contact.html">Contact</a><br><a href="${R}auth/login.html">Sign in</a></p></div>
       <div><strong>Church</strong><p>Palmetto Baptist Church<br>Greenville, SC</p></div>
     </div><div class="wrap legal"><span>© ${new Date().getFullYear()} Palmetto Music Group. All rights reserved.</span></div></footer><div class="toast"></div>`;
