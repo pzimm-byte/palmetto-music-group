@@ -51,6 +51,7 @@ export function UploadForm({ songs, initialMode, initialSong }: { songs: { id: s
 
   const pick = async (file: File | undefined) => {
     setFileError(null);
+    setError(null);
     if (!file) return;
     const kind = audioKind(file);
     if (kind === 'bad') {
@@ -122,6 +123,7 @@ export function UploadForm({ songs, initialMode, initialSong }: { songs: { id: s
         ref={formRef}
         aria-label="Upload a song"
         className="stack gap-18"
+        noValidate
         onSubmit={(e) => {
           e.preventDefault();
           submit();
@@ -168,7 +170,7 @@ export function UploadForm({ songs, initialMode, initialSong }: { songs: { id: s
             <span className="round-tint" aria-hidden="true">
               <Upload size={22} strokeWidth={2} />
             </span>
-            <input ref={fileRef} id="audio" type="file" accept=".mp3,.m4a,.wav,audio/mpeg,audio/mp4,audio/x-m4a,audio/wav" className="sr-only" onChange={(e) => pick(e.target.files?.[0])} data-testid="audio-input" />
+            <input ref={fileRef} id="audio" type="file" aria-label="Audio file" accept=".mp3,.m4a,.wav,audio/mpeg,audio/mp4,audio/x-m4a,audio/wav" className="sr-only" onChange={(e) => pick(e.target.files?.[0])} data-testid="audio-input" />
             <button type="button" className="btn btn-primary" onClick={() => fileRef.current?.click()}>
               Choose audio file
             </button>

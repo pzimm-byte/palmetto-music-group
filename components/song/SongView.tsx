@@ -48,7 +48,8 @@ export function SongView(p: Props) {
   const router = useRouter();
   const player = usePlayer(p.current.duration);
   const D = p.current.duration;
-  const bars = useMemo(() => waveformBars(p.current.id), [p.current.id]);
+  const versionId = p.current.id;
+  const bars = useMemo(() => waveformBars(versionId), [versionId]);
   const isLatest = p.current.number === p.latestNumber;
 
   // ----- version picker: latest on the right, open scrolled to the right -----
@@ -210,17 +211,23 @@ export function SongView(p: Props) {
             </div>
           )}
           <div className="markers">
-            {markers.map((m) => (
+            {markers.map((m) => {
+              // Tap area is 44px, narrowed to the gap to the nearest other dot so crowded dots stay individually tappable.
+              const t = m.timestamp_seconds as number;
+              const gap = markers.reduce((g, o) => (o.id === m.id || o.timestamp_seconds === t ? g : Math.min(g, Math.abs((o.timestamp_seconds as number) - t))), Infinity);
+              const w = Number.isFinite(gap) ? `min(44px, ${((gap / D) * 100).toFixed(2)}%)` : '44px';
+              return (
               <button
                 key={m.id}
                 className="marker"
-                style={{ left: `${((m.timestamp_seconds as number) / D) * 100}%` }}
+                style={{ left: `${(t / D) * 100}%`, width: w, marginLeft: `calc(${w} / -2)` }}
                 aria-label={`Jump to comment at ${formatTime(m.timestamp_seconds as number)}`}
                 onClick={() => player.seek(m.timestamp_seconds as number)}
               >
                 <span aria-hidden="true" />
               </button>
-            ))}
+              );
+            })}
           </div>
           <div
             ref={waveRef}

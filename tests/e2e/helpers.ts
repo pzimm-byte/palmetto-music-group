@@ -48,6 +48,8 @@ export async function expectTouchTargets(page: Page) {
         const after = getComputedStyle(el, '::after');
         if (after.content !== 'none' && after.position === 'absolute' && r.width >= 40) continue;
       }
+      // Waveform dots: 44px tall; width shrinks only when another dot is closer than 44px.
+      if (el.classList.contains('marker') && r.height >= 44) continue;
       if ((el as HTMLInputElement).type === 'radio' && el.closest('label.radio-card')) continue; // whole card is the target
       if (r.width < 44 || r.height < 44) out.push(`${el.tagName}.${el.className} "${(el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 30)}" ${Math.round(r.width)}x${Math.round(r.height)}`);
     }
