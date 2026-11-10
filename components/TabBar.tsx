@@ -13,6 +13,7 @@ const TABS = [
 
 export function TabBar() {
   const path = usePathname() ?? '/';
+  if (path.startsWith('/upload')) return null; // Upload has its own Cancel header, per the design
   const tab = (t: (typeof TABS)[number]) => (
     <Link key={t.href} href={t.href} className="tab" aria-current={t.match(path) ? 'page' : undefined}>
       <t.Icon size={22} strokeWidth={2} aria-hidden="true" />
